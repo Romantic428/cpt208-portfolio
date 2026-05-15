@@ -1,6 +1,6 @@
 # CPT208 Process Portfolio
-Group: [你的组号]
-Project: [你的选题]
+Group: A1-5
+Project: Suzhou Grand Cannel – Chang Gate
 Online URL: https:[//你的用户名.github.io/cpt208-portfolio/](https://romantic428.github.io/cpt208-portfolio/)
 
 ---
