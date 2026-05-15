@@ -1,8 +1,7 @@
 # CPT208 Process Portfolio
 Group: A1-5
 Project: Suzhou Grand Cannel – Chang Gate
-Online URL: https:[//你的用户名.github.io/cpt208-portfolio/](https://romantic428.github.io/cpt208-portfolio/)
-
+Online URL: https://romantic428.github.io/cpt208-portfolio/
 ---
 
 ## 1. Motivation & Research
