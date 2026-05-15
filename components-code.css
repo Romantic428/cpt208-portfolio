@@ -1,0 +1,190 @@
+/*
+================================================================================
+组件3：代码片段展示组件 (Code Block Component)
+================================================================================
+特性：
+- 语法高亮 (基于 Prism.js 风格)
+- 一键复制代码
+- 行号显示
+- 支持多种编程语言
+- Trae 可视化编辑支持
+================================================================================
+*/
+
+/* 代码块容器 */
+[data-component="code-block"] {
+  margin: var(--code-margin, 1.5rem 0);
+  border-radius: var(--code-radius, 8px);
+  overflow: hidden;
+  background-color: var(--code-bg, #1e1e1e);
+  box-shadow: var(--code-shadow, 0 4px 15px rgba(0, 0, 0, 0.2));
+}
+
+/* 代码块头部 */
+[data-component="code-block"] .code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--code-header-padding, 0.8rem 1rem);
+  background-color: var(--code-header-bg, #2d2d2d);
+  border-bottom: 1px solid var(--code-border, #404040);
+}
+
+[data-component="code-block"] .code-language {
+  font-size: var(--code-lang-size, 0.85rem);
+  color: var(--code-lang-color, #8892b0);
+  font-family: var(--code-font-mono, 'Consolas', monospace);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+[data-component="code-block"] .code-actions {
+  display: flex;
+  gap: var(--code-action-gap, 8px);
+}
+
+/* 复制按钮 */
+[data-component="code-block"] .code-copy {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--code-copy-padding, 6px 12px);
+  background-color: var(--code-copy-bg, #3498db);
+  color: var(--code-copy-color, white);
+  border: none;
+  border-radius: var(--code-copy-radius, 4px);
+  font-size: var(--code-copy-size, 0.8rem);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+[data-component="code-block"] .code-copy:hover {
+  background-color: var(--code-copy-hover, #2980b9);
+  transform: translateY(-1px);
+}
+
+[data-component="code-block"] .code-copy.copied {
+  background-color: var(--code-copy-success, #27ae60);
+}
+
+/* 代码内容区 */
+[data-component="code-block"] .code-content {
+  overflow-x: auto;
+  padding: var(--code-content-padding, 1rem);
+}
+
+[data-component="code-block"] pre {
+  margin: 0;
+  font-family: var(--code-font, 'Fira Code', 'Consolas', monospace);
+  font-size: var(--code-size, 14px);
+  line-height: var(--code-line-height, 1.6);
+  color: var(--code-text-color, #e6e6e6);
+}
+
+/* 行号 */
+[data-component="code-block"] .code-line {
+  display: flex;
+  padding: var(--code-line-padding, 2px 0);
+}
+
+[data-component="code-block"] .code-line-number {
+  flex: 0 0 50px;
+  color: var(--code-line-num-color, #666);
+  text-align: right;
+  padding-right: var(--code-line-num-padding, 1rem);
+  user-select: none;
+}
+
+[data-component="code-block"] .code-line-content {
+  flex: 1;
+  white-space: pre;
+}
+
+/* 语法高亮 - 基础色板 */
+[data-component="code-block"] .token-comment,
+[data-component="code-block"] .token.prolog,
+[data-component="code-block"] .token.doctype,
+[data-component="code-block"] .token.cdata {
+  color: var(--code-comment, #6a9955);
+}
+
+[data-component="code-block"] .token.punctuation {
+  color: var(--code-punctuation, #d4d4d4);
+}
+
+[data-component="code-block"] .token.property,
+[data-component="code-block"] .token.tag,
+[data-component="code-block"] .token.boolean,
+[data-component="code-block"] .token.number,
+[data-component="code-block"] .token.constant,
+[data-component="code-block"] .token.symbol,
+[data-component="code-block"] .token.deleted {
+  color: var(--code-number, #b5cea8);
+}
+
+[data-component="code-block"] .token.selector,
+[data-component="code-block"] .token.attr-name,
+[data-component="code-block"] .token.string,
+[data-component="code-block"] .token.char,
+[data-component="code-block"] .token.builtin,
+[data-component="code-block"] .token.inserted {
+  color: var(--code-string, #ce9178);
+}
+
+[data-component="code-block"] .token.operator,
+[data-component="code-block"] .token.entity,
+[data-component="code-block"] .token.url,
+[data-component="code-block"] .language-css .token.string,
+[data-component="code-block"] .style .token.string {
+  color: var(--code-operator, #d4d4d4);
+}
+
+[data-component="code-block"] .token.atrule,
+[data-component="code-block"] .token.attr-value,
+[data-component="code-block"] .token.keyword {
+  color: var(--code-keyword, #569cd6);
+}
+
+[data-component="code-block"] .token.function,
+[data-component="code-block"] .token.class-name {
+  color: var(--code-function, #dcdcaa);
+}
+
+[data-component="code-block"] .token.regex,
+[data-component="code-block"] .token.important,
+[data-component="code-block"] .token.variable {
+  color: var(--code-variable, #9cdcfe);
+}
+
+/* 文件名标签 */
+[data-component="code-block"] .code-filename {
+  display: inline-block;
+  padding: var(--code-filename-padding, 4px 10px);
+  background-color: var(--code-filename-bg, #3a3a3a);
+  color: var(--code-filename-color, #e0e0e0);
+  font-size: var(--code-filename-size, 0.8rem);
+  border-radius: var(--code-filename-radius, 4px);
+  font-family: var(--code-font-mono, 'Consolas', monospace);
+}
+
+/* 行高亮 */
+[data-component="code-block"] .code-line.highlight {
+  background-color: var(--code-line-highlight, rgba(255, 255, 255, 0.05));
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  [data-component="code-block"] pre {
+    font-size: 13px;
+  }
+
+  [data-component="code-block"] .code-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  [data-component="code-block"] .code-line-number {
+    flex: 0 0 40px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chang Gate AR Tour - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">Chang Gate AR Tour</a>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="navbar-link active">Home</a></li>
+        <li><a href="motivation.html" class="navbar-link">Motivation</a></li>
+        <li><a href="requirements.html" class="navbar-link">Requirements</a></li>
+        <li><a href="ideation.html" class="navbar-link">Ideation</a></li>
+        <li><a href="implementation.html" class="navbar-link">Implementation</a></li>
+        <li><a href="evaluation.html" class="navbar-link">Evaluation</a></li>
+        <li><a href="reference.html" class="navbar-link">Reference</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card hero-card">
+      <h1 class="hero-title">CPT208 A1 Project</h1>
+      <h2 class="hero-subtitle">Suzhou Chang Gate AR Tour</h2>
+      <p class="hero-description">
+        A playful AR experience combining cultural heritage with interactive check-ins, 
+        designed for human-centric computing.
+      </p>
+      
+      <div class="hero-image">
+        <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 600px; border-radius: 8px;">
+          <defs>
+            <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#2c3e50"/>
+              <stop offset="100%" style="stop-color:#34495e"/>
+            </linearGradient>
+          </defs>
+          <rect width="800" height="450" fill="url(#heroGrad)"/>
+          <circle cx="400" cy="180" r="60" fill="#3498db" opacity="0.8"/>
+          <circle cx="400" cy="180" r="40" fill="#2980b9"/>
+          <text x="400" y="190" text-anchor="middle" fill="white" font-size="24" font-weight="bold">AR</text>
+          <rect x="150" y="280" width="500" height="120" rx="8" fill="rgba(255,255,255,0.1)"/>
+          <rect x="170" y="300" width="200" height="15" rx="4" fill="rgba(255,255,255,0.3)"/>
+          <rect x="170" y="330" width="300" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
+          <rect x="170" y="355" width="250" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="600" cy="340" r="30" fill="#27ae60" opacity="0.8"/>
+          <text x="600" y="348" text-anchor="middle" fill="white" font-size="14">打卡</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="nav-grid">
+      <a href="motivation.html" class="nav-card">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+        <h3>1. Motivation & Research</h3>
+        <p>Project background and literature review</p>
+      </a>
+      <a href="requirements.html" class="nav-card">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📋</div>
+        <h3>2. User Requirements</h3>
+        <p>User journey and system requirements</p>
+      </a>
+      <a href="ideation.html" class="nav-card">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💡</div>
+        <h3>3. Ideation & Alternatives</h3>
+        <p>Design alternatives and prototypes</p>
+      </a>
+      <a href="implementation.html" class="nav-card">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🛠️</div>
+        <h3>4. Technical Implementation</h3>
+        <p>System architecture and code</p>
+      </a>
+      <a href="evaluation.html" class="nav-card">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📊</div>
+        <h3>5. Evaluation & Reflection</h3>
+        <p>Usability testing and insights</p>
+      </a>
+      <a href="reference.html" class="nav-card">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📚</div>
+        <h3>References</h3>
+        <p>Academic paper citations</p>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>CPT208 A1 Project - Suzhou Chang Gate AR Tour</p>
+    <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">Human-Centric Computing Portfolio</p>
+  </footer>
+
+  <script>
+    document.querySelector('.navbar-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.navbar-menu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!--
+================================================================================
+Chang Gate AR Tour - Trae 可视化组件库
+================================================================================
+组件列表：
+1. 导航栏组件 (Navbar)     - 响应式折叠菜单
+2. 图片展示组件 (Gallery)  - 轮播 + Lightbox
+3. 代码片段组件 (Code)     - 语法高亮 + 复制
+4. 卡片布局组件 (Card)     - 多种变体
+
+引入方式：在 HTML 中引入 components.css 和 components.js
+================================================================================
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件库演示 - Chang Gate AR Tour</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* 演示页面专用样式 */
+    .demo-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 5%;
+    }
+    .demo-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin: 3rem 0 1.5rem;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.5rem;
+    }
+    .demo-note {
+      background-color: #f8f9fa;
+      border-left: 4px solid #3498db;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== 组件1: 导航栏 ==================== -->
+<div class="demo-section">
+  <h2 class="demo-title">组件1: 导航栏 (Navbar)</h2>
+  <div class="demo-note">
+    💡 特性：响应式设计，移动端自动折叠为汉堡菜单
+  </div>
+</div>
+
+<nav class="navbar" data-component="navbar" data-position="sticky">
+  <div class="navbar-container">
+    <a href="#" class="navbar-logo">Chang Gate AR Tour</a>
+    <button class="navbar-toggle" aria-label="切换菜单">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="#" class="navbar-link active">Home</a></li>
+      <li><a href="about.html" class="navbar-link">About</a></li>
+      <li><a href="process.html" class="navbar-link">Design Process</a></li>
+      <li><a href="implementation.html" class="navbar-link">Implementation</a></li>
+      <li><a href="reflection.html" class="navbar-link">Reflection</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div style="height: 60px;"></div>
+
+<!-- ==================== 组件2: 图片展示 ==================== -->
+<div class="demo-section">
+  <h2 class="demo-title">组件2: 图片展示 (Gallery)</h2>
+  <div class="demo-note">
+    💡 特性：点击放大查看、轮播切换、缩略图导航
+  </div>
+</div>
+
+<div class="demo-section">
+  <div class="gallery" data-component="gallery" data-autoplay="false" data-interval="4000" data-show-thumbs="true" data-show-caption="true">
+    <div class="gallery-main">
+      <img src="assets/images/ar-main-visual.jpg" alt="AR Tour 主视觉" data-current>
+      <button class="gallery-arrow prev" aria-label="上一张">❮</button>
+      <button class="gallery-arrow next" aria-label="下一张">❯</button>
+    </div>
+    <div class="gallery-thumbnails">
+      <div class="gallery-thumbnail active">
+        <img src="assets/images/ar-main-visual.jpg" alt="主视觉图">
+      </div>
+      <div class="gallery-thumbnail">
+        <img src="assets/images/ar-main-visual.jpg" alt="AR界面">
+      </div>
+      <div class="gallery-thumbnail">
+        <img src="assets/images/ar-main-visual.jpg" alt="交互流程">
+      </div>
+    </div>
+    <div class="gallery-caption" data-caption>AR Tour 主视觉图</div>
+    <div class="gallery-lightbox" data-lightbox>
+      <button class="lightbox-close" aria-label="关闭">✕</button>
+      <button class="lightbox-arrow lightbox-prev" aria-label="上一张">❮</button>
+      <img src="" alt="" data-lightbox-img>
+      <button class="lightbox-arrow lightbox-next" aria-label="下一张">❯</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 组件3: 代码片段 ==================== -->
+<div class="demo-section">
+  <h2 class="demo-title">组件3: 代码片段 (Code Block)</h2>
+  <div class="demo-note">
+    💡 特性：语法高亮、一键复制代码
+  </div>
+</div>
+
+<div class="demo-section">
+  <!-- HTML 示例 -->
+  <div data-component="code-block" data-language="html" data-show-line="true">
+    <div class="code-header">
+      <span class="code-language">HTML</span>
+      <div class="code-actions">
+        <button class="code-copy" aria-label="复制代码">
+          <span class="copy-icon">📋</span>
+          <span class="copy-text">复制</span>
+        </button>
+      </div>
+    </div>
+    <div class="code-content">
+      <pre><code class="language-html"><nav class="navbar" data-component="navbar">
+  <div class="navbar-container">
+    <a href="index.html" class="navbar-logo">AR Tour</a>
+    <ul class="navbar-menu">
+      <li><a href="about.html">About</a></li>
+      <li><a href="process.html">Process</a></li>
+    </ul>
+  </div>
+</nav></code></pre>
+    </div>
+  </div>
+
+  <!-- CSS 示例 -->
+  <div data-component="code-block" data-language="css" data-show-line="true">
+    <div class="code-header">
+      <span class="code-language">CSS</span>
+      <div class="code-actions">
+        <button class="code-copy" aria-label="复制代码">
+          <span class="copy-icon">📋</span>
+          <span class="copy-text">复制</span>
+        </button>
+      </div>
+    </div>
+    <div class="code-content">
+      <pre><code class="language-css">.navbar {
+  background-color: #2c3e50;
+  padding: 1rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-link {
+  color: white;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: #3498db;
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- JavaScript 示例 -->
+  <div data-component="code-block" data-language="javascript" data-show-line="true">
+    <div class="code-header">
+      <span class="code-language">JavaScript</span>
+      <div class="code-actions">
+        <button class="code-copy" aria-label="复制代码">
+          <span class="copy-icon">📋</span>
+          <span class="copy-text">复制</span>
+        </button>
+      </div>
+    </div>
+    <div class="code-content">
+      <pre><code class="language-javascript">// 导航栏交互
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.navbar-toggle');
+  const menu = document.querySelector('.navbar-menu');
+
+  toggle.addEventListener('click', function() {
+    toggle.classList.toggle('active');
+    menu.classList.toggle('active');
+  });
+});</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 组件4: 卡片布局 ==================== -->
+<div class="demo-section">
+  <h2 class="demo-title">组件4: 卡片布局 (Card Grid)</h2>
+  <div class="demo-note">
+    💡 特性：响应式网格、多种卡片变体、悬浮动效
+  </div>
+</div>
+
+<div class="demo-section">
+  <!-- 网格卡片 -->
+  <div data-component="card-grid" data-cols="3" data-cols-tablet="2" data-cols-mobile="1">
+
+    <div data-component="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/ar-main-visual.jpg" alt="AR界面" class="card-image">
+        <span class="card-badge">AR</span>
+      </div>
+      <h3 class="card-title"><a href="#">AR 界面设计</a></h3>
+      <p class="card-description">
+        基于 Unity 和 ARCore 开发的增强现实交互界面，支持实时场景识别。
+      </p>
+      <div class="card-meta">
+        <span class="card-meta-item">📅 2024-10</span>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="card-link">查看详情 →</a>
+      </div>
+    </div>
+
+    <div data-component="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/ar-main-visual.jpg" alt="用户研究" class="card-image">
+        <span class="card-badge">UX</span>
+      </div>
+      <h3 class="card-title"><a href="#">用户研究分析</a></h3>
+      <p class="card-description">
+        通过访谈和问卷调查收集用户需求，了解目标用户群体的偏好。
+      </p>
+      <div class="card-meta">
+        <span class="card-meta-item">📅 2024-09</span>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="card-link">查看详情 →</a>
+      </div>
+    </div>
+
+    <div data-component="card" class="card-featured">
+      <div class="card-image-wrapper">
+        <img src="assets/images/ar-main-visual.jpg" alt="项目亮点" class="card-image">
+      </div>
+      <h3 class="card-title"><a href="#">项目核心亮点</a></h3>
+      <p class="card-description">
+        创新的 AR 打卡机制，将传统文化与现代技术结合。
+      </p>
+      <div class="card-footer">
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 横向列表卡片 -->
+  <div data-component="card-list" style="margin-top: 2rem;">
+
+    <div data-component="card">
+      <div class="card-image-wrapper">
+        <img src="assets/images/ar-main-visual.jpg" alt="设计过程" class="card-image">
+      </div>
+      <div style="flex: 1;">
+        <h3 class="card-title">设计过程与方法</h3>
+        <p class="card-description">
+          采用双钻模型进行设计，从用户研究到原型测试，确保每个阶段都有明确的产出。
+        </p>
+        <div class="card-footer">
+          <a href="#" class="card-link">阅读全文 →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 图标卡片组 -->
+  <div data-component="card-grid" data-cols="4" data-cols-mobile="2" style="margin-top: 2rem;">
+
+    <div data-component="card">
+      <div class="card-icon">🎯</div>
+      <h3 class="card-title">目标导向</h3>
+      <p class="card-description">明确的项目目标，专注于提供优质的用户体验。</p>
+    </div>
+
+    <div data-component="card">
+      <div class="card-icon">👥</div>
+      <h3 class="card-title">用户中心</h3>
+      <p class="card-description">深入了解用户需求，始终以用户价值为导向。</p>
+    </div>
+
+    <div data-component="card">
+      <div class="card-icon">🔄</div>
+      <h3 class="card-title">迭代优化</h3>
+      <p class="card-description">通过不断测试和反馈，持续改进产品质量。</p>
+    </div>
+
+    <div data-component="card">
+      <div class="card-icon">✨</div>
+      <h3 class="card-title">创新实践</h3>
+      <p class="card-description">探索新技术应用，创造独特的解决方案。</p>
+    </div>
+
+  </div>
+
+  <!-- 并排卡片组 -->
+  <div data-component="card-group" style="margin-top: 2rem;">
+
+    <div data-component="card">
+      <h3 class="card-title">技术栈</h3>
+      <p class="card-description">Unity 3D, ARCore, C#, Blender</p>
+      <a href="#" class="card-link card-link-outline">查看详情</a>
+    </div>
+
+    <div data-component="card">
+      <h3 class="card-title">设计工具</h3>
+      <p class="card-description">Figma, Adobe XD, Sketch</p>
+      <a href="#" class="card-link card-link-outline">查看详情</a>
+    </div>
+
+    <div data-component="card">
+      <h3 class="card-title">协作方式</h3>
+      <p class="card-description">Git, Notion, Slack, Trello</p>
+      <a href="#" class="card-link card-link-outline">查看详情</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer style="background-color: #2c3e50; color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+  <p>Chang Gate AR Tour - Trae 可视化组件库演示</p>
+</footer>
+
+<!-- 组件脚本引入 -->
+<script src="components.js"></script>
+
+</body>
+</html>

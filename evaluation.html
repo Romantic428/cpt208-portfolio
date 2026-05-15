@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluation & Reflection - Chang Gate AR Tour</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">Chang Gate AR Tour</a>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="navbar-link">Home</a></li>
+        <li><a href="motivation.html" class="navbar-link">Motivation</a></li>
+        <li><a href="requirements.html" class="navbar-link">Requirements</a></li>
+        <li><a href="ideation.html" class="navbar-link">Ideation</a></li>
+        <li><a href="implementation.html" class="navbar-link">Implementation</a></li>
+        <li><a href="evaluation.html" class="navbar-link active">Evaluation</a></li>
+        <li><a href="reference.html" class="navbar-link">Reference</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="section-title">5. Evaluation & Reflection</h1>
+
+    <div class="card">
+      <h2>Usability Testing Results</h2>
+      <p style="line-height: 1.8; margin-bottom: 1.5rem;">
+        Usability testing was conducted with 5 participants to evaluate the AR tour prototype. 
+        The testing focused on task completion, user satisfaction, and identifying pain points.
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+        <div style="text-align: center; padding: 1.5rem; background: #e8f6f3; border-radius: 8px;">
+          <div style="font-size: 3rem; font-weight: bold; color: #27ae60;">85%</div>
+          <p style="color: #27ae60; font-weight: bold;">Task Completion</p>
+          <p style="font-size: 0.9rem; color: #666;">Success rate</p>
+        </div>
+        <div style="text-align: center; padding: 1.5rem; background: #fef9e7; border-radius: 8px;">
+          <div style="font-size: 3rem; font-weight: bold; color: #f39c12;">45s</div>
+          <p style="color: #f39c12; font-weight: bold;">Avg. Task Time</p>
+          <p style="font-size: 0.9rem; color: #666;">Per task</p>
+        </div>
+        <div style="text-align: center; padding: 1.5rem; background: #f5eef8; border-radius: 8px;">
+          <div style="font-size: 3rem; font-weight: bold; color: #9b59b6;">4.2/5</div>
+          <p style="color: #9b59b6; font-weight: bold;">Satisfaction</p>
+          <p style="font-size: 0.9rem; color: #666;">User rating</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>User Feedback</h2>
+      
+      <div style="margin-top: 1rem;">
+        <h3 style="color: #27ae60;">Positive Feedback</h3>
+        <ul class="list">
+          <li>"The AR markers are clear and informative."</li>
+          <li>"Check-in feature is fun and intuitive."</li>
+          <li>"No app installation required is a big plus."</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <h3 style="color: #e74c3c;">Areas for Improvement</h3>
+        <ul class="list">
+          <li>"GPS takes too long to locate in crowded areas."</li>
+          <li>"Some AR markers are hard to see in bright sunlight."</li>
+          <li>"Would like more historical information displayed."</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Iterative Improvements</h2>
+      <p style="line-height: 1.8; margin-bottom: 1rem;">
+        Based on user feedback, several improvements were made between the alpha and beta versions:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div style="background: #fdecea; padding: 1rem; border-radius: 8px;">
+          <h4 style="color: #e74c3c;">Before (Alpha)</h4>
+          <ul class="list" style="font-size: 0.9rem;">
+            <li>30-second GPS timeout</li>
+            <li>No fallback position</li>
+            <li>Fixed AR marker brightness</li>
+          </ul>
+        </div>
+        <div style="background: #e8f6f3; padding: 1rem; border-radius: 8px;">
+          <h4 style="color: #27ae60;">After (Beta)</h4>
+          <ul class="list" style="font-size: 0.9rem;">
+            <li>10-second GPS timeout</li>
+            <li>Virtual coordinate fallback</li>
+            <li>Auto-adjusting marker brightness</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Challenges & Solutions</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        <div style="background: #fef9e7; padding: 1rem; border-radius: 8px; border-left: 4px solid #f39c12;">
+          <h4>GPS Timeout</h4>
+          <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+            Solution: Implemented virtual coordinate fallback with 10-second timeout
+          </p>
+        </div>
+        <div style="background: #fef9e7; padding: 1rem; border-radius: 8px; border-left: 4px solid #f39c12;">
+          <h4>AR Rendering</h4>
+          <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+            Solution: Adjusted elevation parameters in A-Frame configuration
+          </p>
+        </div>
+        <div style="background: #fef9e7; padding: 1rem; border-radius: 8px; border-left: 4px solid #f39c12;">
+          <h4>Cross-Browser Compatibility</h4>
+          <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+            Solution: Added feature detection for camera and geolocation APIs
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Learning Outcomes</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 2rem;">💻</div>
+          <h4 style="color: #2c3e50; margin-top: 0.5rem;">Technical Skills</h4>
+          <p style="font-size: 0.85rem; color: #666;">A-Frame/AR.js, GPS positioning, mobile web</p>
+        </div>
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 2rem;">🎨</div>
+          <h4 style="color: #2c3e50; margin-top: 0.5rem;">Design Skills</h4>
+          <p style="font-size: 0.85rem; color: #666;">Human-centric design, prototyping</p>
+        </div>
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 2rem;">👥</div>
+          <h4 style="color: #2c3e50; margin-top: 0.5rem;">Teamwork</h4>
+          <p style="font-size: 0.85rem; color: #666;">Collaboration, task division</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Social & Ethical Impact Reflection</h2>
+      <div style="margin-top: 1rem;">
+        <h3 style="color: #2c3e50; font-size: 1.1rem;">Digital Divide Considerations</h3>
+        <p style="line-height: 1.8; margin-top: 0.5rem; color: #666;">
+          While this AR tour provides an innovative way to engage with cultural heritage, it relies on 
+          smartphones with GPS and camera capabilities. This creates a potential digital divide, 
+          excluding visitors who may not have access to such devices. To address this, future iterations 
+          could explore low-tech alternatives or partner with local tourism offices to provide device rentals.
+        </p>
+      </div>
+      
+      <div style="margin-top: 1.5rem;">
+        <h3 style="color: #2c3e50; font-size: 1.1rem;">Privacy Concerns</h3>
+        <p style="line-height: 1.8; margin-top: 0.5rem; color: #666;">
+          The application collects location data and user-generated content (photos). While 
+          currently stored locally on the user's device, any future cloud integration must 
+          prioritize data privacy. Users should have full control over their data, including 
+          the ability to delete photos and location history at any time.
+        </p>
+      </div>
+      
+      <div style="margin-top: 1.5rem;">
+        <h3 style="color: #2c3e50; font-size: 1.1rem;">Cultural Preservation vs. Commercialization</h3>
+        <p style="line-height: 1.8; margin-top: 0.5rem; color: #666;">
+          There is a delicate balance between making cultural heritage accessible and avoiding 
+          over-commercialization. The AR tour should enhance, not replace, the authentic 
+          experience of visiting historical sites. Care must be taken to ensure that the technology 
+          serves as a complement to, rather than a distraction from, the cultural significance 
+          of Chang Gate and its surroundings.
+        </p>
+      </div>
+      
+      <div style="margin-top: 1.5rem;">
+        <h3 style="color: #2c3e50; font-size: 1.1rem;">Inclusivity and Accessibility</h3>
+        <p style="line-height: 1.8; margin-top: 0.5rem; color: #666;">
+          The current implementation relies heavily on visual and auditory elements, which may 
+          not be accessible to users with visual or hearing impairments. Future development 
+          should incorporate accessibility features such as text-to-speech, high contrast modes, 
+          and alternative navigation methods for users with disabilities.
+        </p>
+      </div>
+      
+      <div style="margin-top: 1.5rem;">
+        <h3 style="color: #2c3e50; font-size: 1.1rem;">Community Engagement</h3>
+        <p style="line-height: 1.8; margin-top: 0.5rem; color: #666;">
+          By allowing local residents to share their stories and memories through the "Resident 
+          Stories" feature, the project fosters community engagement and strengthens the connection 
+          between residents and their cultural heritage. This participatory approach helps preserve 
+          living history that might otherwise be lost.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white;">
+      <h2>Conclusion</h2>
+      <p style="line-height: 1.8;">
+        The Chang Gate AR Tour project successfully demonstrates the potential of web-based AR 
+        for cultural heritage tourism. By combining GPS-based positioning with interactive 
+        check-ins, we created an engaging experience that bridges historical knowledge with 
+        modern technology. Future improvements could include backend integration for social 
+        features, 3D historical models, and multi-language support.
+      </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="implementation.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-right: 1rem;">
+        ← Previous: Implementation
+      </a>
+      <a href="reference.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px;">
+        Next: References →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.navbar-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.navbar-menu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

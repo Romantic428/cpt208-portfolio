@@ -1,0 +1,132 @@
+/*
+================================================================================
+组件1：导航栏组件 (Navbar Component)
+================================================================================
+特性：
+- 响应式设计，桌面端水平展示
+- 移动端自动折叠为汉堡菜单
+- 支持 Trae 可视化编辑属性配置
+- 配色方案：#2c3e50 (深蓝) / #3498db (亮蓝)
+================================================================================
+*/
+
+[data-component="navbar"] {
+  background-color: var(--navbar-bg, #2c3e50);
+  padding: var(--navbar-padding, 1rem 5%);
+  position: var(--navbar-position, sticky);
+  top: 0;
+  z-index: 999;
+}
+
+[data-component="navbar"] .navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--navbar-max-width, 1200px);
+  margin: 0 auto;
+}
+
+[data-component="navbar"] .navbar-logo {
+  color: var(--navbar-logo-color, white);
+  font-size: var(--navbar-logo-size, 1.2rem);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+[data-component="navbar"] .navbar-logo:hover {
+  color: var(--navbar-logo-hover, #3498db);
+}
+
+[data-component="navbar"] .navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--navbar-link-gap, 2rem);
+}
+
+[data-component="navbar"] .navbar-link {
+  color: var(--navbar-link-color, white);
+  text-decoration: none;
+  font-size: var(--navbar-link-size, 0.95rem);
+  transition: color 0.3s;
+  padding: var(--navbar-link-padding, 0.5rem 0);
+  position: relative;
+}
+
+[data-component="navbar"] .navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--navbar-link-active, #3498db);
+  transition: width 0.3s;
+}
+
+[data-component="navbar"] .navbar-link:hover::after,
+[data-component="navbar"] .navbar-link.active::after {
+  width: 100%;
+}
+
+[data-component="navbar"] .navbar-link:hover {
+  color: var(--navbar-link-hover, #3498db);
+}
+
+/* 汉堡菜单按钮 */
+[data-component="navbar"] .navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+  background: none;
+  border: none;
+}
+
+[data-component="navbar"] .navbar-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--navbar-toggle-color, white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+[data-component="navbar"] .navbar-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+[data-component="navbar"] .navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+[data-component="navbar"] .navbar-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* 移动端响应式 */
+@media (max-width: 768px) {
+  [data-component="navbar"] .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--navbar-bg, #2c3e50);
+    flex-direction: column;
+    gap: var(--navbar-mobile-gap, 1rem);
+    padding: var(--navbar-mobile-padding, 1rem 5%);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  [data-component="navbar"] .navbar-menu.active {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  [data-component="navbar"] .navbar-toggle {
+    display: flex;
+  }
+}

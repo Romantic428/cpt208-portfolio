@@ -1,0 +1,94 @@
+<!--
+================================================================================
+组件1：导航栏组件 HTML (Navbar Component)
+================================================================================
+属性配置说明：
+- data-logo-text:  Logo显示文字
+- data-logo-link:   Logo链接地址
+- data-theme:       主题配色 (dark/light/custom)
+- data-position:    定位方式 (sticky/fixed/relative)
+- data-menu-items:  JSON格式菜单项配置
+
+使用方法：
+1. 引入 components-navbar.css
+2. 引入 components-navbar.js
+3. 复制下方HTML结构
+================================================================================
+-->
+
+<nav class="navbar" data-component="navbar"
+     data-logo-text="Chang Gate AR Tour"
+     data-logo-link="index.html"
+     data-theme="dark"
+     data-position="sticky">
+
+  <div class="navbar-container">
+    <a href="#" class="navbar-logo">Chang Gate AR Tour</a>
+
+    <button class="navbar-toggle" aria-label="切换菜单">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="navbar-menu">
+      <li><a href="index.html" class="navbar-link active">Home</a></li>
+      <li><a href="about.html" class="navbar-link">About</a></li>
+      <li><a href="process.html" class="navbar-link">Design Process</a></li>
+      <li><a href="implementation.html" class="navbar-link">Implementation</a></li>
+      <li><a href="reflection.html" class="navbar-link">Reflection</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 移动端占位div，防止内容被固定导航栏遮挡 -->
+<div style="height: 60px;" data-component="navbar-spacing"></div>
+
+<script>
+// 导航栏交互逻辑
+document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.querySelector('[data-component="navbar"]');
+  if (!navbar) return;
+
+  const toggle = navbar.querySelector('.navbar-toggle');
+  const menu = navbar.querySelector('.navbar-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+
+    // 点击菜单项后关闭移动端菜单
+    const links = menu.querySelectorAll('.navbar-link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          toggle.classList.remove('active');
+          menu.classList.remove('active');
+        }
+      });
+    });
+
+    // 窗口大小变化时重置菜单状态
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+      }
+    });
+  }
+
+  // Trae 可视化编辑支持 - 高亮当前页面链接
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = navbar.querySelectorAll('.navbar-link');
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+});
+</script>

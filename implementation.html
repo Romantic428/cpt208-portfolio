@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Implementation - Chang Gate AR Tour</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">Chang Gate AR Tour</a>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="navbar-link">Home</a></li>
+        <li><a href="motivation.html" class="navbar-link">Motivation</a></li>
+        <li><a href="requirements.html" class="navbar-link">Requirements</a></li>
+        <li><a href="ideation.html" class="navbar-link">Ideation</a></li>
+        <li><a href="implementation.html" class="navbar-link active">Implementation</a></li>
+        <li><a href="evaluation.html" class="navbar-link">Evaluation</a></li>
+        <li><a href="reference.html" class="navbar-link">Reference</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="section-title">4. Technical Implementation</h1>
+
+    <div class="card">
+      <h2>Data Processing Flow</h2>
+      <div style="background: #fafafa; padding: 2rem; border-radius: 8px; margin-top: 1rem;">
+        <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" style="width: 100%;">
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#95a5a6"/>
+            </marker>
+          </defs>
+          
+          <rect x="300" y="30" width="200" height="60" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+          <text x="400" y="55" text-anchor="middle" fill="#2c3e50" font-size="14">Visitor opens webpage / scans QR code</text>
+          
+          <line x1="400" y1="90" x2="400" y2="120" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          
+          <rect x="280" y="130" width="240" height="50" rx="8" fill="#dfe6e9" stroke="#bdc3c7" stroke-width="2"/>
+          <text x="400" y="160" text-anchor="middle" fill="#2c3e50" font-size="13">1. Get location / Select tour spot</text>
+          
+          <line x1="400" y1="180" x2="400" y2="210" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          
+          <rect x="260" y="220" width="280" height="50" rx="8" fill="#dfe6e9" stroke="#bdc3c7" stroke-width="2"/>
+          <text x="400" y="250" text-anchor="middle" fill="#2c3e50" font-size="13">2. Frontend submits spot info & user data</text>
+          
+          <line x1="400" y1="270" x2="400" y2="300" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          
+          <rect x="240" y="310" width="320" height="55" rx="8" fill="#dfe6e9" stroke="#bdc3c7" stroke-width="2"/>
+          <text x="400" y="342" text-anchor="middle" fill="#2c3e50" font-size="11">3. System retrieves cultural database + AR resources</text>
+          
+          <line x1="400" y1="365" x2="400" y2="395" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          
+          <rect x="220" y="400" width="360" height="55" rx="8" fill="#bdc3c7" stroke="#95a5a6" stroke-width="2"/>
+          <text x="400" y="432" text-anchor="middle" fill="#2c3e50" font-size="11">4. Data processing (match stories, routes, check-in info)</text>
+          
+          <line x1="400" y1="455" x2="400" y2="485" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          
+          <rect x="300" y="490" width="200" height="50" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+          <text x="400" y="518" text-anchor="middle" fill="#2c3e50" font-size="13">Process completed</text>
+          
+          <line x1="580" y1="335" x2="700" y2="335" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          <rect x="710" y="310" width="80" height="50" rx="8" fill="#a29bfe" stroke="#6c5ce7" stroke-width="2"/>
+          <text x="750" y="332" text-anchor="middle" fill="white" font-size="10">Cultural Database</text>
+          <text x="750" y="350" text-anchor="middle" fill="white" font-size="9">AR Resources</text>
+          
+          <line x1="220" y1="432" x2="160" y2="432" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          <rect x="100" y="410" width="100" height="50" rx="8" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
+          <text x="150" y="430" text-anchor="middle" fill="#2c3e50" font-size="10">Feedback Render</text>
+          <text x="150" y="448" text-anchor="middle" fill="#2c3e50" font-size="9">Info/Navigation/Check-in</text>
+          
+          <line x1="150" y1="460" x2="150" y2="490" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)"/>
+          <rect x="100" y="495" width="100" height="40" rx="8" fill="#81ecec" stroke="#00cec9" stroke-width="2"/>
+          <text x="150" y="520" text-anchor="middle" fill="#2c3e50" font-size="10">Save user data</text>
+          
+          <line x1="150" y1="535" x2="400" y2="535" stroke="#95a5a6" stroke-width="2" stroke-dasharray="5,5"/>
+        </svg>
+        <div style="margin-top: 1.5rem; padding: 1rem; background: #fff; border-radius: 8px; border-left: 4px solid #95a5a6;">
+          <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">
+            <strong>Process Description:</strong> After entering the application, the system first obtains location or allows users to select tour spots. The frontend submits spot information to the backend. The system retrieves relevant content from the cultural database and AR resource library. After data matching and processing, the system renders three types of feedback: historical information popup, AR navigation directions, and check-in completion. Finally, user tour behavior data is saved and the process ends.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Team Contribution</h2>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+          <thead>
+            <tr style="background: #f8f9fa;">
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: 600;">Name</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: 600;">Student ID</th>
+              <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: 600;">Contributions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="border: 1px solid #ddd; padding: 12px;">Tianxiang Hong</td>
+              <td style="border: 1px solid #ddd; padding: 12px;">2363023</td>
+              <td style="border: 1px solid #ddd; padding: 12px;">
+                <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.8;">
+                  <li>Code Development (GPS fallback mechanism, AR rendering, check-in system)</li>
+                  <li>UI/UX Design (wireframes, prototypes, visual design)</li>
+                  <li>Content Creation (historical research, story writing)</li>
+                  <li>System Testing (functional testing, usability testing)</li>
+                  <li>Portfolio Development (all documentation and materials)</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        <strong>Note:</strong> This project was completed entirely by a single developer (Tianxiang Hong). All aspects of the project including system development, UI/UX design, content creation, testing, and portfolio production were handled independently.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Core Implementation Code</h2>
+      
+      <h3 style="color: #2c3e50; margin-top: 1rem;">GPS Location Manager with Fallback</h3>
+      <pre class="code-block"><code>class LocationManager {
+  async getCurrentPosition(options = {}) {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        return this._handleFallback(reject);
+      }
+      
+      const timeout = setTimeout(() => {
+        this._handleFallback(reject);
+      }, 10000);
+      
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          clearTimeout(timeout);
+          resolve(position);
+        },
+        (error) => {
+          clearTimeout(timeout);
+          this._handleError(error, reject);
+        },
+        { ...options, timeout: 10000 }
+      );
+    });
+  }
+
+  async _handleFallback(reject) {
+    const fallbackCoords = {
+      latitude: 31.3237,
+      longitude: 120.6205
+    };
+    resolve({
+      coords: fallbackCoords,
+      timestamp: Date.now()
+    });
+  }
+
+  _handleError(error, reject) {
+    const errorTypes = {
+      1: 'Permission denied',
+      2: 'Position unavailable',
+      3: 'Timeout'
+    };
+    reject(new Error(errorTypes[error.code] || 'Unknown error'));
+  }
+}</code></pre>
+
+      <h3 style="color: #2c3e50; margin-top: 1.5rem;">AR Marker Rendering</h3>
+      <pre class="code-block"><code>class ARMarkerRenderer {
+  constructor(scene) {
+    this.scene = scene;
+    this.markers = [];
+    this.maxDistance = 50;
+  }
+
+  addMarker(id, position, content) {
+    const marker = { id, position, content, entity: null };
+    this.markers.push(marker);
+    this._renderMarker(marker);
+  }
+
+  _renderMarker(marker) {
+    const entity = document.createElement('a-entity');
+    entity.setAttribute('gps-entity-place', {
+      latitude: marker.position.latitude,
+      longitude: marker.position.longitude
+    });
+    entity.setAttribute('text', {
+      value: marker.content,
+      color: '#2c3e50',
+      align: 'center'
+    });
+    entity.setAttribute('scale', '1 1 1');
+    
+    this.scene.appendChild(entity);
+    marker.entity = entity;
+  }
+
+  updateMarkers(userPosition) {
+    this.markers.forEach(marker => {
+      const distance = this._calculateDistance(
+        userPosition, marker.position
+      );
+      
+      if (marker.entity) {
+        marker.entity.object3D.visible = distance <= this.maxDistance;
+      }
+    });
+  }
+
+  _calculateDistance(pos1, pos2) {
+    const R = 6371;
+    const dLat = (pos2.latitude - pos1.latitude) * Math.PI / 180;
+    const dLon = (pos2.longitude - pos1.longitude) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(pos1.latitude * Math.PI / 180) * 
+              Math.cos(pos2.latitude * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+  }
+}</code></pre>
+
+      <h3 style="color: #2c3e50; margin-top: 1.5rem;">Check-in Manager</h3>
+      <pre class="code-block"><code>class CheckinManager {
+  constructor() {
+    this.checkins = this._loadCheckins();
+  }
+
+  _loadCheckins() {
+    try {
+      const data = localStorage.getItem('ar_checkins');
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  _saveCheckins() {
+    localStorage.setItem('ar_checkins', JSON.stringify(this.checkins));
+  }
+
+  async capturePhoto() {
+    return new Promise((resolve, reject) => {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'environment' }
+      });
+      
+      const video = document.createElement('video');
+      video.srcObject = stream;
+      video.play();
+      
+      setTimeout(() => {
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0);
+        
+        stream.getTracks().forEach(track => track.stop());
+        resolve(canvas.toDataURL('image/jpeg', 0.8));
+      }, 100);
+    });
+  }
+
+  addCheckin(location, photoData) {
+    const checkin = {
+      id: Date.now(),
+      location,
+      photo: photoData,
+      timestamp: new Date().toISOString()
+    };
+    this.checkins.push(checkin);
+    this._saveCheckins();
+    return checkin;
+  }
+
+  getCheckins() {
+    return [...this.checkins];
+  }
+}</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>Technology Stack</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 1.5rem;">🌐</div>
+          <h4 style="color: #2c3e50;">HTML5</h4>
+        </div>
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 1.5rem;">🎨</div>
+          <h4 style="color: #2c3e50;">CSS3</h4>
+        </div>
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 1.5rem;">⚡</div>
+          <h4 style="color: #2c3e50;">JavaScript</h4>
+        </div>
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 1.5rem;">🎲</div>
+          <h4 style="color: #2c3e50;">A-Frame</h4>
+        </div>
+        <div style="text-align: center; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+          <div style="font-size: 1.5rem;">📱</div>
+          <h4 style="color: #2c3e50;">AR.js</h4>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="ideation.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-right: 1rem;">
+        ← Previous: Ideation
+      </a>
+      <a href="evaluation.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px;">
+        Next: Evaluation →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.navbar-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.navbar-menu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

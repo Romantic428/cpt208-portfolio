@@ -1,0 +1,228 @@
+/*
+================================================================================
+组件2：图片展示组件 (Image Gallery Component)
+================================================================================
+特性：
+- 支持点击放大查看 (Lightbox)
+- 轮播功能，支持自动播放和手动切换
+- 缩略图导航
+- 支持 Trae 可视化编辑属性配置
+================================================================================
+*/
+
+/* 画廊容器 */
+[data-component="gallery"] {
+  margin: var(--gallery-margin, 2rem 0);
+}
+
+/* 主图区域 */
+[data-component="gallery"] .gallery-main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--gallery-ratio, 16/9);
+  background-color: var(--gallery-bg, #f5f5f5);
+  border-radius: var(--gallery-radius, 8px);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+[data-component="gallery"] .gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--gallery-fit, cover);
+  transition: transform 0.3s ease;
+}
+
+[data-component="gallery"] .gallery-main:hover img {
+  transform: scale(1.02);
+}
+
+/* 轮播箭头 */
+[data-component="gallery"] .gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--gallery-arrow-size, 40px);
+  height: var(--gallery-arrow-size, 40px);
+  background-color: var(--gallery-arrow-bg, rgba(44, 62, 80, 0.8));
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  z-index: 10;
+  opacity: 0;
+}
+
+[data-component="gallery"]:hover .gallery-arrow {
+  opacity: 1;
+}
+
+[data-component="gallery"] .gallery-arrow:hover {
+  background-color: var(--gallery-arrow-hover, #3498db);
+  transform: translateY(-50%) scale(1.1);
+}
+
+[data-component="gallery"] .gallery-arrow.prev {
+  left: var(--gallery-arrow-offset, 10px);
+}
+
+[data-component="gallery"] .gallery-arrow.next {
+  right: var(--gallery-arrow-offset, 10px);
+}
+
+/* 轮播指示器 */
+[data-component="gallery"] .gallery-indicators {
+  display: flex;
+  justify-content: center;
+  gap: var(--gallery-indicator-gap, 8px);
+  margin-top: var(--gallery-indicator-margin, 1rem);
+}
+
+[data-component="gallery"] .gallery-indicator {
+  width: var(--gallery-indicator-size, 10px);
+  height: var(--gallery-indicator-size, 10px);
+  border-radius: 50%;
+  background-color: var(--gallery-indicator-inactive, #ccc);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+[data-component="gallery"] .gallery-indicator:hover,
+[data-component="gallery"] .gallery-indicator.active {
+  background-color: var(--gallery-indicator-active, #3498db);
+  transform: scale(1.2);
+}
+
+/* 缩略图导航 */
+[data-component="gallery"] .gallery-thumbnails {
+  display: flex;
+  gap: var(--gallery-thumb-gap, 10px);
+  margin-top: var(--gallery-thumb-margin, 1rem);
+  overflow-x: auto;
+  padding: var(--gallery-thumb-padding, 5px);
+}
+
+[data-component="gallery"] .gallery-thumbnail {
+  flex: 0 0 var(--gallery-thumb-size, 80px);
+  height: var(--gallery-thumb-size, 80px);
+  border-radius: var(--gallery-thumb-radius, 4px);
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  opacity: 0.6;
+}
+
+[data-component="gallery"] .gallery-thumbnail:hover,
+[data-component="gallery"] .gallery-thumbnail.active {
+  border-color: var(--gallery-thumb-active, #3498db);
+  opacity: 1;
+}
+
+[data-component="gallery"] .gallery-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 图片信息 */
+[data-component="gallery"] .gallery-caption {
+  text-align: var(--gallery-caption-align, center);
+  padding: var(--gallery-caption-padding, 1rem 0);
+  color: var(--gallery-caption-color, #666);
+  font-size: var(--gallery-caption-size, 0.95rem);
+}
+
+/* Lightbox 弹窗 */
+[data-component="gallery"] .gallery-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+[data-component="gallery"] .gallery-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+[data-component="gallery"] .gallery-lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: var(--gallery-lightbox-radius, 4px);
+}
+
+[data-component="gallery"] .gallery-lightbox .lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+[data-component="gallery"] .gallery-lightbox .lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-component="gallery"] .gallery-lightbox .lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+[data-component="gallery"] .gallery-lightbox .lightbox-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-component="gallery"] .gallery-lightbox .lightbox-prev {
+  left: 20px;
+}
+
+[data-component="gallery"] .gallery-lightbox .lightbox-next {
+  right: 20px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  [data-component="gallery"] .gallery-arrow {
+    opacity: 1;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  [data-component="gallery"] .gallery-thumbnail {
+    flex: 0 0 60px;
+    height: 60px;
+  }
+}

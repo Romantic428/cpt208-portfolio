@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Requirements - Chang Gate AR Tour</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">Chang Gate AR Tour</a>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="navbar-link">Home</a></li>
+        <li><a href="motivation.html" class="navbar-link">Motivation</a></li>
+        <li><a href="requirements.html" class="navbar-link active">Requirements</a></li>
+        <li><a href="ideation.html" class="navbar-link">Ideation</a></li>
+        <li><a href="implementation.html" class="navbar-link">Implementation</a></li>
+        <li><a href="evaluation.html" class="navbar-link">Evaluation</a></li>
+        <li><a href="reference.html" class="navbar-link">Reference</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="section-title">2. User Requirements</h1>
+
+    <div class="card">
+      <h2>User Journey Map with Pain Points</h2>
+      
+      <div style="background: #f8f9fa; padding: 2rem; border-radius: 8px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+          <div style="flex: 1; min-width: 140px; text-align: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 0.5rem; background: #3498db; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
+                <circle cx="20" cy="12" r="6" fill="white"/>
+                <ellipse cx="20" cy="28" rx="10" ry="12" fill="white"/>
+              </svg>
+            </div>
+            <h4 style="color: #2c3e50;">Discover</h4>
+            <p style="font-size: 0.85rem; color: #666;">Find the AR tour</p>
+            <div style="background: #fdecea; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+              <p style="font-size: 0.75rem; color: #e74c3c;">❓ Where to start?</p>
+            </div>
+          </div>
+          
+          <div style="color: #ccc; font-size: 1.5rem; align-self: center;">→</div>
+          
+          <div style="flex: 1; min-width: 140px; text-align: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 0.5rem; background: #f39c12; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
+                <circle cx="20" cy="12" r="6" fill="white"/>
+                <ellipse cx="20" cy="28" rx="10" ry="12" fill="white"/>
+                <path d="M10 20 L20 10 L30 20" stroke="#f39c12" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h4 style="color: #2c3e50;">Navigate</h4>
+            <p style="font-size: 0.85rem; color: #666;">Find route</p>
+            <div style="background: #fdecea; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+              <p style="font-size: 0.75rem; color: #e74c3c;">😫 Route unclear</p>
+            </div>
+          </div>
+          
+          <div style="color: #ccc; font-size: 1.5rem; align-self: center;">→</div>
+          
+          <div style="flex: 1; min-width: 140px; text-align: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 0.5rem; background: #9b59b6; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
+                <circle cx="20" cy="12" r="6" fill="white"/>
+                <ellipse cx="20" cy="28" rx="10" ry="12" fill="white"/>
+                <rect x="14" y="22" width="12" height="8" fill="#9b59b6"/>
+              </svg>
+            </div>
+            <h4 style="color: #2c3e50;">Explore</h4>
+            <p style="font-size: 0.85rem; color: #666;">Learn about site</p>
+            <div style="background: #fdecea; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+              <p style="font-size: 0.75rem; color: #e74c3c;">❓ No cultural context</p>
+            </div>
+          </div>
+          
+          <div style="color: #ccc; font-size: 1.5rem; align-self: center;">→</div>
+          
+          <div style="flex: 1; min-width: 140px; text-align: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 0.5rem; background: #27ae60; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
+                <circle cx="20" cy="12" r="6" fill="white"/>
+                <ellipse cx="20" cy="28" rx="10" ry="12" fill="white"/>
+                <circle cx="20" cy="25" r="4" fill="#27ae60"/>
+              </svg>
+            </div>
+            <h4 style="color: #2c3e50;">Check-in</h4>
+            <p style="font-size: 0.85rem; color: #666;">Capture memories</p>
+            <div style="background: #e8f6f3; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+              <p style="font-size: 0.75rem; color: #27ae60;">✅ Share moments</p>
+            </div>
+          </div>
+          
+          <div style="color: #ccc; font-size: 1.5rem; align-self: center;">→</div>
+          
+          <div style="flex: 1; min-width: 140px; text-align: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 0.5rem; background: #34495e; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 40 40" style="width: 40px; height: 40px;">
+                <circle cx="20" cy="12" r="6" fill="white"/>
+                <ellipse cx="20" cy="28" rx="10" ry="12" fill="white"/>
+                <path d="M12 22 Q20 18 28 22" stroke="#34495e" stroke-width="2" fill="none"/>
+                <path d="M20 22 L20 30" stroke="#34495e" stroke-width="2"/>
+              </svg>
+            </div>
+            <h4 style="color: #2c3e50;">Share</h4>
+            <p style="font-size: 0.85rem; color: #666;">Share experience</p>
+            <div style="background: #e8f6f3; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+              <p style="font-size: 0.75rem; color: #27ae60;">✅ Connect with others</p>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #ddd;">
+          <h4 style="color: #2c3e50; margin-bottom: 1rem;">Key Pain Points Identified</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <div style="background: #fdecea; padding: 1rem; border-radius: 8px;">
+              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🗺️</div>
+              <h5 style="color: #e74c3c; margin-bottom: 0.5rem;">Route Confusion</h5>
+              <p style="font-size: 0.9rem; color: #666;">
+                Visitors don't know the best path to explore Chang Gate, leading to inefficient navigation and missed attractions.
+              </p>
+            </div>
+            <div style="background: #fdecea; padding: 1rem; border-radius: 8px;">
+              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📜</div>
+              <h5 style="color: #e74c3c; margin-bottom: 0.5rem;">Lack of Cultural Context</h5>
+              <p style="font-size: 0.9rem; color: #666;">
+                Tourists lack understanding of the historical significance and cultural stories behind the heritage site.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>System Requirements List</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <div style="background: #e8f6f3; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: flex-start; gap: 1.5rem;">
+            <div style="width: 50px; height: 50px; background: #27ae60; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">🎙️</div>
+            <div>
+              <h3 style="color: #27ae60; margin-bottom: 0.5rem;">Feature 1: Location-Based Audio Guide</h3>
+              <p style="font-size: 0.95rem; color: #666; line-height: 1.6;">
+                When visitors approach a heritage site (within 50-meter radius), the system automatically detects their location and displays relevant historical information along with audio narration. This provides contextual cultural knowledge without requiring manual searching.
+              </p>
+              <ul class="list" style="margin-top: 0.5rem;">
+                <li>Auto-detect proximity to heritage points</li>
+                <li>Display text descriptions of the site</li>
+                <li>Play audio narration on demand</li>
+                <li>Support multiple languages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div style="background: #e8f4f8; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: flex-start; gap: 1.5rem;">
+            <div style="width: 50px; height: 50px; background: #3498db; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">🧭</div>
+            <div>
+              <h3 style="color: #3498db; margin-bottom: 0.5rem;">Feature 2: AR Navigation Guidance</h3>
+              <p style="font-size: 0.95rem; color: #666; line-height: 1.6;">
+                The system provides visual navigation arrows overlaid on the camera view, guiding visitors along recommended routes. AR markers appear in the real-world view to indicate direction and distance to the next point of interest.
+              </p>
+              <ul class="list" style="margin-top: 0.5rem;">
+                <li>AR arrow overlay on camera feed</li>
+                <li>Real-time distance indicator</li>
+                <li>Multiple route options (scenic, quick, comprehensive)</li>
+                <li>Turn-by-turn visual guidance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div style="background: #fef9e7; padding: 1.5rem; border-radius: 8px;">
+          <div style="display: flex; align-items: flex-start; gap: 1.5rem;">
+            <div style="width: 50px; height: 50px; background: #f39c12; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">🥚</div>
+            <div>
+              <h3 style="color: #f39c12; margin-bottom: 0.5rem;">Feature 3: Easter Egg Memory Sharing</h3>
+              <p style="font-size: 0.95rem; color: #666; line-height: 1.6;">
+                A playful feature allowing visitors to capture and share memories. Tourists can take photos at checkpoints, while local residents can contribute personal stories and memories associated with the heritage site, creating a collective cultural archive.
+              </p>
+              <ul class="list" style="margin-top: 0.5rem;">
+                <li>Photo capture at designated checkpoints</li>
+                <li>Memory upload for residents (text/stories)</li>
+                <li>Local storage of check-in history</li>
+                <li>Gallery view of captured moments</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Functional Requirements</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+        <thead>
+          <tr style="background: #2c3e50; color: white;">
+            <th style="padding: 0.8rem; text-align: left;">ID</th>
+            <th style="padding: 0.8rem; text-align: left;">Requirement</th>
+            <th style="padding: 0.8rem; text-align: left;">Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.8rem;">FR-001</td>
+            <td style="padding: 0.8rem;">System shall detect user's current location and trigger audio guide within 50m of heritage points</td>
+            <td style="padding: 0.8rem;">High</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.8rem;">FR-002</td>
+            <td style="padding: 0.8rem;">System shall display AR navigation arrows to guide visitors along recommended routes</td>
+            <td style="padding: 0.8rem;">High</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.8rem;">FR-003</td>
+            <td style="padding: 0.8rem;">Users shall be able to capture photos and save memories at checkpoints</td>
+            <td style="padding: 0.8rem;">High</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 0.8rem;">FR-004</td>
+            <td style="padding: 0.8rem;">Residents shall be able to submit personal stories and memories about heritage sites</td>
+            <td style="padding: 0.8rem;">Medium</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem;">FR-005</td>
+            <td style="padding: 0.8rem;">System shall provide error handling for GPS failure with fallback mechanism</td>
+            <td style="padding: 0.8rem;">High</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="motivation.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-right: 1rem;">
+        ← Previous: Motivation
+      </a>
+      <a href="ideation.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px;">
+        Next: Ideation →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.navbar-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('.navbar-menu').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

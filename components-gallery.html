@@ -1,0 +1,190 @@
+<!--
+================================================================================
+组件2：图片展示组件 HTML (Image Gallery Component)
+================================================================================
+属性配置说明：
+- data-images:       JSON格式图片数组
+- data-autoplay:     是否自动播放 (true/false)
+- data-interval:     自动播放间隔 (毫秒)
+- data-show-thumbs:  显示缩略图 (true/false)
+- data-show-caption: 显示图片说明 (true/false)
+
+示例 data-images 配置：
+[{"src": "image1.jpg", "thumb": "thumb1.jpg", "alt": "描述文字", "caption": "图片说明"}]
+
+使用方法：
+1. 引入 components-gallery.css
+2. 引入 components-gallery.js
+3. 复制下方HTML结构
+================================================================================
+-->
+
+<div class="gallery" data-component="gallery"
+     data-autoplay="false"
+     data-interval="4000"
+     data-show-thumbs="true"
+     data-show-caption="true">
+
+  <!-- 主图展示区域 -->
+  <div class="gallery-main">
+    <img src="assets/images/ar-main-visual.jpg" alt="AR Tour Main Visual" data-current>
+    <button class="gallery-arrow prev" aria-label="上一张">❮</button>
+    <button class="gallery-arrow next" aria-label="下一张">❯</button>
+  </div>
+
+  <!-- 缩略图导航 -->
+  <div class="gallery-thumbnails">
+    <div class="gallery-thumbnail active">
+      <img src="assets/images/ar-main-visual.jpg" alt="缩略图1">
+    </div>
+    <div class="gallery-thumbnail">
+      <img src="assets/images/ar-main-visual.jpg" alt="缩略图2">
+    </div>
+    <div class="gallery-thumbnail">
+      <img src="assets/images/ar-main-visual.jpg" alt="缩略图3">
+    </div>
+  </div>
+
+  <!-- 图片说明 -->
+  <div class="gallery-caption" data-caption>AR Tour 主视觉图</div>
+
+  <!-- Lightbox 弹窗 -->
+  <div class="gallery-lightbox" data-lightbox>
+    <button class="lightbox-close" aria-label="关闭">✕</button>
+    <button class="lightbox-arrow lightbox-prev" aria-label="上一张">❮</button>
+    <img src="" alt="" data-lightbox-img>
+    <button class="lightbox-arrow lightbox-next" aria-label="下一张">❯</button>
+  </div>
+</div>
+
+<script>
+// 图片画廊交互逻辑
+(function() {
+  const galleries = document.querySelectorAll('[data-component="gallery"]');
+
+  galleries.forEach(gallery => {
+    const mainImg = gallery.querySelector('[data-current]');
+    const thumbnails = gallery.querySelectorAll('.gallery-thumbnail');
+    const caption = gallery.querySelector('[data-caption]');
+    const lightbox = gallery.querySelector('[data-lightbox]');
+    const lightboxImg = gallery.querySelector('[data-lightbox-img]');
+    const prevBtn = gallery.querySelector('.gallery-arrow.prev');
+    const nextBtn = gallery.querySelector('.gallery-arrow.next');
+    const lightboxPrev = gallery.querySelector('.lightbox-arrow.lightbox-prev');
+    const lightboxNext = gallery.querySelector('.lightbox-arrow.lightbox-next');
+    const lightboxClose = gallery.querySelector('.lightbox-close');
+
+    // 获取图片数据
+    const images = Array.from(thumbnails).map(thumb => ({
+      src: thumb.querySelector('img').src,
+      alt: thumb.querySelector('img').alt,
+      caption: thumb.querySelector('img').alt
+    }));
+
+    let currentIndex = 0;
+
+    // 更新显示图片
+    function updateImage(index) {
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+
+      currentIndex = index;
+      mainImg.src = images[index].src;
+      mainImg.alt = images[index].alt;
+
+      if (caption) {
+        caption.textContent = images[index].caption || '';
+      }
+
+      thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+      });
+    }
+
+    // 事件绑定
+    if (prevBtn) prevBtn.addEventListener('click', () => updateImage(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => updateImage(currentIndex + 1));
+
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => updateImage(index));
+    });
+
+    // 点击主图打开 Lightbox
+    if (mainImg) {
+      mainImg.addEventListener('click', () => {
+        lightboxImg.src = images[currentIndex].src;
+        lightboxImg.alt = images[currentIndex].alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // Lightbox 导航
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', () => {
+        updateImage(currentIndex - 1);
+        lightboxImg.src = images[currentIndex].src;
+      });
+    }
+
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', () => {
+        updateImage(currentIndex + 1);
+        lightboxImg.src = images[currentIndex].src;
+      });
+    }
+
+    // 关闭 Lightbox
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+
+      if (e.key === 'ArrowLeft') {
+        updateImage(currentIndex - 1);
+        lightboxImg.src = images[currentIndex].src;
+      } else if (e.key === 'ArrowRight') {
+        updateImage(currentIndex + 1);
+        lightboxImg.src = images[currentIndex].src;
+      } else if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // 自动播放
+    const autoplay = gallery.dataset.autoplay === 'true';
+    const interval = parseInt(gallery.dataset.interval) || 4000;
+    let autoplayTimer = null;
+
+    if (autoplay) {
+      function startAutoplay() {
+        autoplayTimer = setInterval(() => {
+          updateImage(currentIndex + 1);
+        }, interval);
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+      }
+
+      gallery.addEventListener('mouseenter', stopAutoplay);
+      gallery.addEventListener('mouseleave', startAutoplay);
+      startAutoplay();
+    }
+  });
+})();
+</script>
